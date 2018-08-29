@@ -18,6 +18,7 @@ int main()
 {
     //struct stack obj;
     int n, c;
+    do{
     printf("Enter choice from:\n 1.PUSH\n 2.POP\n 3.PEEK\n 4.DISPLAY\n 5.EXIT\n");
     scanf("%d",&n);
     switch(n)
@@ -34,23 +35,7 @@ int main()
         }
         printf("Continue?\n 1.Yes\n 2.No\n");
         scanf("%d",&c);
-    while(c!=0)
-    {
-        printf("Enter choice from:\n 1.PUSH\n 2.POP\n 3.PEEK\n 4.DISPLAY\n 5.EXIT\n");
-        scanf("%d",&n);
-        switch(n)
-        {
-            case 1: push();
-            break;
-            case 2: pop();
-            break;
-            case 3: peek();
-            break;
-            case 4: display();
-            break;
-            case 5: exit(0);
-        }
-    }
+    }while(c=1);
     return 0;
 }
 void push()
@@ -104,7 +89,7 @@ void display()
    // struct stack o4;
     if(top>=0)
     {
-        for(int i=0; i<top; i++)
+        for(int i = top; i >= 0; i--)
         {
             printf("%d\n",stack[i]);
         }
