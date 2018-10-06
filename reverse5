@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+  int data;
+  struct node *link;
+} *first = NULL, *ptr;
+void ins ();
+void trav ();
+int
+main ()
+{
+  ins ();
+  return 0;
+}
+
+void
+ins ()
+{
+  int item, c;
+  while (c < 5)
+    {
+      struct node *temp;
+      temp = (struct node *) malloc (sizeof (struct node *));
+      printf ("Enter the item:\n");
+      scanf ("%d", &item);
+      if (first != NULL)
+	{
+	  temp->data = item;	// Link the data part
+	  temp->link = NULL;
+	  ptr = first;
+	  // Traverse to the last node
+	  while (ptr->link != NULL)
+	    {
+	      ptr = ptr->link;
+	    }
+	  ptr->link = temp;
+	}
+      else
+	{
+	  temp->data = item;
+	  temp->link = first;
+	  first = temp;
+	}
+      c++;
+    }
+  while (c > 5 && c < 10)
+    {
+      printf ("Enter the item:\n");
+      scanf ("%d", &item);
+      temp->data = item;	// Link the data part
+	  temp->link = NULL;
+	  ptr = first;
+	  // Traverse to the last node
+	  while (ptr->link != NULL)
+	    {
+	      ptr = ptr->link;
+	    }
+	    
+    }
+
+}
