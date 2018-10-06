@@ -1,0 +1,96 @@
+#include<stdio.h>
+#include<stdlib.h>
+void push();
+void pop();
+void dis();
+struct node
+{
+    int data;
+    struct node *link;
+}*first=NULL, *ptr;
+
+int main()
+{
+    int c;
+    printf("Enter option:\n");
+    printf("1.Push\n2.Pop\n3.Display\n4.Exit");
+    scanf("%d",&c);
+    do{
+    switch(c)
+    {
+        case 1:push();
+        break;
+        case 2:pop();
+        break;
+        case 3:dis();
+        break;
+        case 4:exit(0);
+        break;
+        default:printf("Enter valid option.");
+    }
+    printf("Enter option:\n");
+    printf("1.Push\n2.Pop\n3.Display\n4.Exit");
+    scanf("%d",&c);
+    }while(c!=0);
+    return 0;
+}
+
+
+
+void push()
+{
+    struct node *temp;
+    temp = (struct node*)malloc(sizeof(struct node*));
+    int item;
+    if(first=NULL)
+    {
+        printf("Enter the element to be pushed:\n");
+        scanf("%d",&item);
+        temp->data = item;
+        temp->link = first;
+        first = temp;
+    }
+    else
+    {
+        printf("Enter the element to be pushed:\n");
+        scanf("%d",&item);
+        temp->data = item;
+        temp->link =NULL;
+        ptr = first;
+        while(ptr->link!=NULL)
+        {
+        ptr = ptr->link;
+        }
+        ptr->link = temp;
+    }
+}
+
+void pop()
+{
+    struct node *temp, *prev;
+    temp = (struct node*)malloc(sizeof(struct node*));
+    if(first=NULL)
+    {
+        printf("Stack underflow!\n");
+    }
+    else
+    {
+        ptr = first;
+        while(ptr->link!=NULL)
+        {
+            ptr = ptr->link;
+        }
+        ptr->link = NULL;
+        free(temp);
+    }
+}
+
+void dis()
+{
+    ptr = first;
+    while(ptr!=NULL)
+    {
+        printf("%d\n",ptr->data);
+        ptr = ptr->link;
+    }
+}
