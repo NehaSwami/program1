@@ -1,40 +1,134 @@
 #include<stdio.h>
 #include<stdlib.h>
-void bin(long long n)
+
+void triangle ();
+void circle ();
+void rectangle ();
+void square ();
+void diamond ();
+
+void
+bin (long long n)		// hexadecimal to binary then displays
 {
-	unsigned i;
-	for (i = 1 << 63; i > 0; i = i / 2)
-    	(n & i)? printf("1"): printf("0");
-    	printf("\n");
-}
-long long setbit(long long l,int x)
-{
-    	long long t=1;
-    	t=t<<x;
-    	bin(l|t);
-    	return l|t;
+  unsigned long long i, j;
+  for (i = (long long) 1 << 63, j = 1; i > 0; i = i / 2, j++)
+    {
+      (n & i) ? printf (" 1 ") : printf (" 0 ");
+      if (j % 8 == 0)
+	printf ("\n");
+    }
+  printf ("\n");
 }
 
-long long  resetbit(long long l)
+long long
+setbit (long long l, int x)
 {
-    	long long t=0;
-    	bin(l&t);
-    	return l&t;
+  long long t = 1;
+  t = t << x;
+  bin (l | t);
+  return l | t;
 }
 
-long long  unsetbit(long long l,int n)
+long long
+resetbit (long long l)
 {
-    	long long u=1,v;
-    	u=u<<n;
-    	v=~u;
-    	bin(l&v);
-    	return l&v;
+  long long t = 0;
+  bin (l & t);
+  return l & t;
 }
-int main()
+
+long long
+unsetbit (long long l, int n)
 {
-  long long x=0,y;
-  y=setbit(0x2F,7);
-  //setbit(0x2F,5);
-  unsetbit(y,0);
-  resetbit(y);
+  long long u = 1;
+  u = u << n;
+  u = ~u;
+  bin (l & u);
+  return l & u;
+}
+
+int
+main ()
+{
+  while (1)
+    {
+      int op, op1, op2;
+      char ch;
+      printf ("\n\tSHAPE STACK MENU:\n");
+      printf ("\n1.PUSH\n2.POP\n3.DISPLAY");
+      printf ("\nChoose option(1,2,3):");
+      scanf ("%d", &op);
+      switch (op)
+	{
+	case 1:		// stack is empty condition to do
+	  do
+	    {
+	      printf
+		("\n1.CIRCLE\n2.TRIANGLE\n3.SQUARE\n4.RECTANGLE\n5.DIAMOND\nEnter bitmap shape to push:");
+	      scanf ("%d", &op1);
+	      switch (op1)
+		{
+		case 1:
+		  circle ();
+		  break;
+		case 2:
+		  triangle ();
+		  break;
+		case 3:
+		  square ();
+		  break;
+		case 4:
+		  rectangle ();
+		  break;
+		case 5:
+		  diamond ();
+		  break;
+		default:
+		  printf ("Enter valid option\n");
+		}
+	      printf ("Do you want to push more shapes(y/n)?");
+	      scanf (" %c", &ch);
+
+	    }
+	  while (ch == 'y' | ch == 'Y');
+	  break;
+
+	}
+    }
+}
+
+void
+triangle ()
+{
+  long long y = 0;
+  y = setbit (0x10387CFE00, -1);
+}
+
+void
+circle ()
+{
+  long long y = 0;
+  y = setbit (0x183C7E7E3C1800, -1);
+}
+
+void
+square ()
+{
+  long long y = 0;
+  y = setbit (0x3C3C3C3C0000, -1);
+}
+
+void
+rectangle ()
+{
+  long long y = 0;
+  y = setbit (0x7E7E7E7E0000, -1);
+}
+
+
+void
+diamond ()
+{
+  long long x = 0, y;
+  y = setbit (0x10387CFE7C3810, -1);
 }
